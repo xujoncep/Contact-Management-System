@@ -1,14 +1,17 @@
-
 {
-    "builds": [{
-        "src": "contact/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "Python 3.12.5" }
-    }],
+    "version": 2,
+    "builds": [
+      { "src": "manage.py", "use": "@vercel/python" }
+    ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "contact/wsgi.py"
-        }
-    ]
-}
+      { "src": "/static/(.*)", "dest": "/static/$1" },
+      { "src": "/media/(.*)", "dest": "/media/$1" },
+      { "src": "/(.*)", "dest": "contact/wsgi.py" }
+    ],
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "contact.settings",
+      "SECRET_KEY": "@secret_key",
+      "DATABASE_URL": "@database_url"
+    }
+  }
+  
