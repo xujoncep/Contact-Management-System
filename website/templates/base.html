@@ -1,0 +1,47 @@
+<!-- contacts/templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="{% url 'home' %}" class="text-2xl font-bold text-blue-600">Contact Management</a>
+            <ul class="flex space-x-4">
+                <li>
+                    <a href="{% url 'add_contact' %}" class="text-blue-600 hover:text-blue-800">Add Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto flex justify-center items-center mt-12">
+        <div class="w-full max-w-xl bg-white p-8 rounded-lg shadow-lg">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer class="bg-white text-center py-4 mt-auto">
+        <p class="text-gray-500">&copy; 2024 Contact Management System. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
